@@ -5,8 +5,11 @@ using UnityEngine;
 public class Tank : MonoBehaviour
 {
 
-	private float speed = 0.5f;
-	private float rotationSpeed = 5f;
+	[SerializeField]
+	private float speed = 6f;
+	
+	[SerializeField]
+	private float rotationSpeed = 50f;
 	
 	private void Awake()
 	{
@@ -24,20 +27,20 @@ public class Tank : MonoBehaviour
 
 		if (Input.GetKey(KeyCode.W))
 		{
-			transform.position += transform.forward * speed;
+			transform.position += transform.forward * speed * Time.deltaTime;
 		}
 		else if (Input.GetKey(KeyCode.S))
 		{
-			transform.position -= transform.forward * speed;
+			transform.position -= transform.forward * speed * Time.deltaTime;
 		}
 		
 		if (Input.GetKey(KeyCode.D))
 		{
-			transform.Rotate(transform.up, rotationSpeed);
+			transform.Rotate(transform.up, rotationSpeed * Time.deltaTime);
 		}
 		else if (Input.GetKey(KeyCode.A))
 		{
-			transform.Rotate(transform.up, -rotationSpeed);
+			transform.Rotate(transform.up, -rotationSpeed * Time.deltaTime);
 		}
 		
 	}
