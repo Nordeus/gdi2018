@@ -10,6 +10,15 @@ public class Tank : MonoBehaviour
 	
 	[SerializeField]
 	private float rotationSpeed = 50f;
+	
+	[SerializeField]
+	private float shootingForce;
+
+	[SerializeField]
+	private GameObject bulletPrefab;
+
+	[SerializeField]
+	private Transform shootingFrom;
 
 	private Rigidbody rigidbody;
 
@@ -37,6 +46,11 @@ public class Tank : MonoBehaviour
 		pressedBack = Input.GetKey(KeyCode.S);
 		pressedRight = Input.GetKey(KeyCode.D);
 		pressedLeft = Input.GetKey(KeyCode.A);
+
+		if (Input.GetKeyUp(KeyCode.Space))
+		{
+			Shoot();
+		}
 	}
 
 	private void FixedUpdate()
@@ -67,5 +81,15 @@ public class Tank : MonoBehaviour
 	private void OnDestroy()
 	{
 		Debug.Log("OnDestroy");
+	}
+
+	private void Shoot()
+	{
+		//var bulletGameobject = Instantiate(bulletPrefab);
+		var bulletGameobject = Instantiate(Resources.Load("Prefabs/CompleteShell")) as GameObject;
+		
+		bulletGameobject.transform.position = shootingFrom.position;
+		bulletGameobject.transform.forward = transform.forward;
+		bulletGameobject.GetComponent<Rigidbody>().AddForce(shootingForce * bulletGameobject.transform.forward);
 	}
 }
