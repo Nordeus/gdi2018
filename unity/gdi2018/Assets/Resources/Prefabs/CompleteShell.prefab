@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 13693818}
   - component: {fileID: 5409530}
   - component: {fileID: 10833074}
+  - component: {fileID: 114887261974496652}
   m_Layer: 0
   m_Name: CompleteShell
   m_TagString: Untagged
@@ -135,7 +136,7 @@ CapsuleCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 192454}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.15
   m_Height: 0.55
@@ -268,6 +269,17 @@ Transform:
   m_Father: {fileID: 498018}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114887261974496652
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 192454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c604afd192afa48c1b5893fee0dd09cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!198 &198280443358216586
 ParticleSystem:
   m_ObjectHideFlags: 1

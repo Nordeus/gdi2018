@@ -20,7 +20,7 @@ public class Tank : MonoBehaviour
 	[SerializeField]
 	private Transform shootingFrom;
 
-	private Rigidbody rigidbody;
+	private Rigidbody myRigidbody;
 
 	private bool pressedForward;
 	private bool pressedLeft;
@@ -31,7 +31,7 @@ public class Tank : MonoBehaviour
 	{
 		Debug.Log("Awake " + gameObject.name);
 
-		rigidbody = GetComponent<Rigidbody>();
+		myRigidbody = GetComponent<Rigidbody>();
 	}
 
 	private void Start()
@@ -60,11 +60,11 @@ public class Tank : MonoBehaviour
 		// if the input is ok, move the physics
 		if (pressedForward)
 		{
-			rigidbody.AddForce(transform.forward * speed * Time.deltaTime);
+			myRigidbody.AddForce(transform.forward * speed * Time.deltaTime);
 		}
 		else if (pressedBack)
 		{
-			rigidbody.AddForce(-transform.forward * speed * Time.deltaTime);
+			myRigidbody.AddForce(-transform.forward * speed * Time.deltaTime);
 		}
 		
 		if (pressedRight)
