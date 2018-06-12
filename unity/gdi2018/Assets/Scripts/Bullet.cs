@@ -25,6 +25,7 @@ public class Bullet : MonoBehaviour
 		
 		// fire explosion and explode
 		GetComponentInChildren<ParticleSystem>().Play();
+		GetComponent<Rigidbody>().velocity = Vector3.zero;
 		timeToDestroy = 0.5f;
 		exploding = true;
 	}
