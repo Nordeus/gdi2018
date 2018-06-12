@@ -53,9 +53,13 @@ public class ShootingTower : MonoBehaviour
 		if (timeToReload <= 0)
 		{
 			// check if we can see the tank
-			if (Physics.Raycast(transform.position, transform.forward, 100f, shootingLayerMask))
+			RaycastHit hit;
+			if (Physics.Raycast(transform.position, transform.forward, out hit, 100f, shootingLayerMask))
 			{
-				Shoot();
+				if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Tank"))
+				{
+					Shoot();
+				}
 			}
 		}
 	}

@@ -553,4 +553,4 @@ MonoBehaviour:
   shootingFrom: {fileID: 4406660082433088}
   shootingLayerMask:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 1536
