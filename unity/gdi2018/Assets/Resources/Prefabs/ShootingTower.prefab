@@ -551,3 +551,6 @@ MonoBehaviour:
   reloadDuration: 1
   shootingForce: 1500
   shootingFrom: {fileID: 4406660082433088}
+  shootingLayerMask:
+    serializedVersion: 2
+    m_Bits: 512

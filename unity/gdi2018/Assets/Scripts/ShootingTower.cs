@@ -17,6 +17,9 @@ public class ShootingTower : MonoBehaviour
 	[SerializeField]
 	private Transform shootingFrom;
 
+	[SerializeField]
+	private LayerMask shootingLayerMask;
+
 	private float timeToReload;
 
 	private Tank targetTank;
@@ -49,7 +52,11 @@ public class ShootingTower : MonoBehaviour
 
 		if (timeToReload <= 0)
 		{
-			Shoot();
+			// check if we can see the tank
+			if (Physics.Raycast(transform.position, transform.forward, 100f, shootingLayerMask))
+			{
+				Shoot();
+			}
 		}
 	}
 
