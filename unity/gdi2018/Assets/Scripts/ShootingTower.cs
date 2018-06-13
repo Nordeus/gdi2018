@@ -49,6 +49,8 @@ public class ShootingTower : MonoBehaviour
 		{
 			timeToReload -= Time.deltaTime;
 		}
+		
+		Debug.DrawRay(transform.position, transform.forward * 50f, Color.red);
 
 		if (timeToReload <= 0)
 		{
