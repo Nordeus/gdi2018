@@ -223,7 +223,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1720728572690362}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.49, z: 1.03}
+  m_LocalPosition: {x: 0, y: 0.91, z: 1.03}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4922223185354918}
@@ -270,7 +270,7 @@ Transform:
   - {fileID: 4406660082433088}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 140.97, z: 0}
 --- !u!4 &4922866843776366
 Transform:
   m_ObjectHideFlags: 1
@@ -562,7 +562,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerRotationSpeed: 1
   reloadDuration: 3
-  shootingForce: 1500
+  shootingForce: 1000
   shootingFrom: {fileID: 4406660082433088}
   shootingLayerMask:
     serializedVersion: 2
