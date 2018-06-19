@@ -20,18 +20,25 @@ public class Tank : MonoBehaviour
 	[SerializeField]
 	private Transform shootingFrom;
 
+	[SerializeField]
+	private float reloadDuration;
+
 	private Rigidbody myRigidbody;
 
 	private bool pressedForward;
 	private bool pressedLeft;
 	private bool pressedBack;
 	private bool pressedRight;
+
+	private float timeToReload;
 	
 	private void Awake()
 	{
 		Debug.Log("Awake " + gameObject.name);
 
 		myRigidbody = GetComponent<Rigidbody>();
+		
+		timeToReload = 0f;
 	}
 
 	private void Start()
@@ -47,7 +54,12 @@ public class Tank : MonoBehaviour
 		pressedRight = Input.GetKey(KeyCode.D);
 		pressedLeft = Input.GetKey(KeyCode.A);
 
-		if (Input.GetKeyUp(KeyCode.Space))
+		if (timeToReload > 0)
+		{
+			timeToReload -= Time.deltaTime;
+		}
+		
+		if (Input.GetKeyUp(KeyCode.Space) && timeToReload <= 0)
 		{
 			Shoot();
 		}
@@ -85,6 +97,8 @@ public class Tank : MonoBehaviour
 
 	private void Shoot()
 	{
+		timeToReload = reloadDuration;
+		
 		//var bulletGameobject = Instantiate(bulletPrefab);
 		var bulletGameobject = Instantiate(Resources.Load("Prefabs/CompleteShell")) as GameObject;
 		
