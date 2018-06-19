@@ -9627,3 +9627,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 2000
   rotationSpeed: 100
+  shootingForce: 1500
+  bulletPrefab: {fileID: 192454, guid: 008ecb1b70bec724fa2cd34255b0d8f8, type: 2}
+  shootingFrom: {fileID: 435794}

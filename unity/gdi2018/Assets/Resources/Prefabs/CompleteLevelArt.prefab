@@ -389,7 +389,7 @@ GameObject:
   - component: {fileID: 6572526}
   m_Layer: 0
   m_Name: Building01 (1)
-  m_TagString: Untagged
+  m_TagString: Destructible
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -495,7 +495,7 @@ GameObject:
   - component: {fileID: 6535744}
   m_Layer: 0
   m_Name: Building01 (3)
-  m_TagString: Untagged
+  m_TagString: Destructible
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -692,7 +692,7 @@ GameObject:
   - component: {fileID: 6529174}
   m_Layer: 0
   m_Name: Building02
-  m_TagString: Untagged
+  m_TagString: Destructible
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -936,7 +936,7 @@ GameObject:
   - component: {fileID: 6513952}
   m_Layer: 0
   m_Name: Building02 (1)
-  m_TagString: Untagged
+  m_TagString: Destructible
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -974,7 +974,7 @@ GameObject:
   - component: {fileID: 6524904}
   m_Layer: 0
   m_Name: Building02 (2)
-  m_TagString: Untagged
+  m_TagString: Destructible
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -1062,7 +1062,7 @@ GameObject:
   - component: {fileID: 6548018}
   m_Layer: 0
   m_Name: Building01
-  m_TagString: Untagged
+  m_TagString: Destructible
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -2034,7 +2034,7 @@ GameObject:
   - component: {fileID: 6546124}
   m_Layer: 0
   m_Name: Building01 (2)
-  m_TagString: Untagged
+  m_TagString: Destructible
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -2154,7 +2154,7 @@ GameObject:
   - component: {fileID: 13645844}
   m_Layer: 0
   m_Name: Radar
-  m_TagString: Untagged
+  m_TagString: Destructible
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -9388,7 +9388,7 @@ Animator:
   m_GameObject: {fileID: 157012}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: d7962f90116a5c94d9a7a2b2e4fbc1b2, type: 3}
-  m_Controller: {fileID: 9100000, guid: 92ebf232461ebc342884766124202572, type: 2}
+  m_Controller: {fileID: 0}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -9424,7 +9424,7 @@ Animator:
   m_GameObject: {fileID: 118640}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: d7962f90116a5c94d9a7a2b2e4fbc1b2, type: 3}
-  m_Controller: {fileID: 9100000, guid: 92ebf232461ebc342884766124202572, type: 2}
+  m_Controller: {fileID: 0}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -9496,7 +9496,7 @@ Animator:
   m_GameObject: {fileID: 179732}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: d7962f90116a5c94d9a7a2b2e4fbc1b2, type: 3}
-  m_Controller: {fileID: 9100000, guid: 92ebf232461ebc342884766124202572, type: 2}
+  m_Controller: {fileID: 0}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
