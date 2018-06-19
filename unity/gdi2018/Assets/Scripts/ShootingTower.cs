@@ -17,6 +17,9 @@ public class ShootingTower : MonoBehaviour
 	[SerializeField]
 	private Transform shootingFrom;
 
+	[SerializeField]
+	private LayerMask shootingLayerMask;
+
 	private float timeToReload;
 
 	private Tank targetTank;
@@ -47,9 +50,19 @@ public class ShootingTower : MonoBehaviour
 			timeToReload -= Time.deltaTime;
 		}
 
+		Debug.DrawRay(transform.position, transform.forward * 50f, Color.red);
+
 		if (timeToReload <= 0)
 		{
-			Shoot();
+			// check if we can see the tank
+			RaycastHit hit;
+			if (Physics.Raycast(transform.position, transform.forward, out hit, 100f, shootingLayerMask))
+			{
+				if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Tank"))
+				{
+					Shoot();
+				}
+			}
 		}
 	}
 
