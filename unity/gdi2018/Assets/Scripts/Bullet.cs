@@ -27,7 +27,7 @@ public class Bullet : MonoBehaviour
 			}
 			else
 			{
-				Destroy(other.gameObject);
+				other.gameObject.SetActive(false);
 			}
 		}
 		
