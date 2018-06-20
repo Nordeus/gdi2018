@@ -23,6 +23,9 @@ public class Tank : MonoBehaviour
 	[SerializeField]
 	private float reloadDuration;
 
+	[SerializeField]
+	private int startingHealth;
+
 	private Rigidbody myRigidbody;
 
 	private bool pressedForward;
@@ -30,7 +33,14 @@ public class Tank : MonoBehaviour
 	private bool pressedBack;
 	private bool pressedRight;
 
+	private int health;
+
 	private float timeToReload;
+	
+	public int Health
+	{
+		get { return health; }
+	}
 	
 	private void Awake()
 	{
@@ -39,6 +49,7 @@ public class Tank : MonoBehaviour
 		myRigidbody = GetComponent<Rigidbody>();
 		
 		timeToReload = 0f;
+		health = startingHealth;
 	}
 
 	private void Start()
@@ -105,5 +116,14 @@ public class Tank : MonoBehaviour
 		bulletGameobject.transform.position = shootingFrom.position;
 		bulletGameobject.transform.forward = transform.forward;
 		bulletGameobject.GetComponent<Rigidbody>().AddForce(shootingForce * bulletGameobject.transform.forward);
+	}
+
+	public void OnHit()
+	{
+		health--;
+		if (health == 0)
+		{
+			Destroy(gameObject);
+		}
 	}
 }

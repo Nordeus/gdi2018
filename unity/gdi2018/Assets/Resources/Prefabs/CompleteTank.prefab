@@ -9631,3 +9631,4 @@ MonoBehaviour:
   bulletPrefab: {fileID: 192454, guid: 008ecb1b70bec724fa2cd34255b0d8f8, type: 2}
   shootingFrom: {fileID: 435794}
   reloadDuration: 0.5
+  startingHealth: 3

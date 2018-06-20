@@ -20,7 +20,15 @@ public class Bullet : MonoBehaviour
 		
 		if (other.gameObject.CompareTag("Destructible"))
 		{
-			Destroy(other.gameObject);
+			var tank = other.gameObject.GetComponent<Tank>();
+			if (tank != null)
+			{
+				tank.OnHit();
+			}
+			else
+			{
+				Destroy(other.gameObject);
+			}
 		}
 		
 		// fire explosion and explode
