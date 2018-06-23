@@ -62,7 +62,7 @@ public class GameManager : MonoBehaviour
 			}
 			else if (GameState == GameStateType.EndGame)
 			{
-				ReloadGame();
+				ExitToMainMenu();
 			}
 		}
 	}
@@ -90,5 +90,10 @@ public class GameManager : MonoBehaviour
 	{
 		Debug.Log("Reload");
 		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+	}
+
+	private void ExitToMainMenu()
+	{
+		SceneManager.LoadScene("MainMenuScene");
 	}
 }
