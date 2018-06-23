@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -32,6 +33,8 @@ public class GameManager : MonoBehaviour
 	
 	public GameStateType GameState { get; private set; }
 
+	public Action<bool> OnGameEnds;
+
 	private void Start()
 	{
 		ResumeGame();
@@ -47,6 +50,11 @@ public class GameManager : MonoBehaviour
 			Debug.Log("END");
 			Time.timeScale = 0f;
 			GameState = GameStateType.EndGame;
+			if (OnGameEnds != null)
+			{
+				var playerHasWon = tank.Health > 0;
+				OnGameEnds(playerHasWon);
+			}
 		}
 		
 		// check for pause
