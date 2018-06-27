@@ -48,6 +48,13 @@ public class MainMenuManager : MonoBehaviour
 	[SerializeField]
 	private Button quitButton;
 
+	[Header("Matches")]
+	[SerializeField]
+	private RectTransform matchesContainerPanel;
+	
+	[SerializeField]
+	private Button matchesButton;
+
 	[SerializeField]
 	private RectTransform matchesPanel;
 
@@ -63,7 +70,10 @@ public class MainMenuManager : MonoBehaviour
 		quitButton.onClick.AddListener(OnQuitButtonClick);
 		loginQuitButton.onClick.AddListener(OnQuitButtonClick);
 		playButton.onClick.AddListener(OnPlayButtonClick);
+		matchesButton.onClick.AddListener(OnMatchesButtonClick);
 		errorPanel.gameObject.SetActive(false);
+		
+		matchesContainerPanel.gameObject.SetActive(false);
 	}
 
 	private void Start()
@@ -78,7 +88,7 @@ public class MainMenuManager : MonoBehaviour
 			return;
 		
 		errorPanel.gameObject.SetActive(false);
-		UserModel.GetUser(username, RefreshMainMenu,
+		PlayerModel.GetPlayer(username, RefreshMainMenu,
 		() =>
 		{
 			errorPanel.gameObject.SetActive(true);
@@ -87,15 +97,15 @@ public class MainMenuManager : MonoBehaviour
 
 	private void RefreshMainMenu()
 	{
-		var isLoggedIn = UserModel.User != null;
+		var isLoggedIn = PlayerModel.Player != null;
 		loginPanel.gameObject.SetActive(!isLoggedIn);
 		gamePanel.gameObject.SetActive(isLoggedIn);
 		if (isLoggedIn)
 		{
-			usernameText.text = UserModel.User.username;
-			userXpText.text = UserModel.User.xp + "/" + (UserModel.User.level * 10);
-			userLevelProgressImage.fillAmount = UserModel.User.xp / (UserModel.User.level * 10f);
-			userLevelText.text = (UserModel.User.level + 1).ToString();
+			usernameText.text = PlayerModel.Player.username;
+			userXpText.text = PlayerModel.Player.xp + "/" + (PlayerModel.Player.level * 50f);
+			userLevelProgressImage.fillAmount = PlayerModel.Player.xp / (PlayerModel.Player.level * 50f);
+			userLevelText.text = (PlayerModel.Player.level + 1).ToString();
 
 			FetchBattles();
 		}
@@ -111,15 +121,15 @@ public class MainMenuManager : MonoBehaviour
 		{
 			matchInfoPanels[i].gameObject.SetActive(false);
 		}
-		UserModel.GetBattles(RefreshBattles, null);
+		PlayerModel.GetBattles(RefreshBattles, () => { noMatchesText.text = "ERROR!"; });
 	}
 
 	private void RefreshBattles()
 	{
 		var matchInfoPanels = matchesPanel.GetComponentsInChildren<MatchInfoPanel>().ToList();
-		for (int i = 0; i < UserModel.Battles.Length; i++)
+		for (int i = 0; i < PlayerModel.Battles.Length; i++)
 		{
-			var battle = UserModel.Battles[i];
+			var battle = PlayerModel.Battles[i];
 			// already existing, refresh it
 			if (i < matchInfoPanels.Count)
 			{
@@ -136,7 +146,7 @@ public class MainMenuManager : MonoBehaviour
 		}
 
 		// remove not used ones
-		for (int i = UserModel.Battles.Length; i < matchInfoPanels.Count; i++)
+		for (int i = PlayerModel.Battles.Length; i < matchInfoPanels.Count; i++)
 		{
 			matchInfoPanels[i].gameObject.SetActive(false);
 		}
@@ -144,7 +154,7 @@ public class MainMenuManager : MonoBehaviour
 		// calculate the size of the container
 		var height = matchInfoPanels.Count > 0 ? matchInfoPanels[0].GetComponent<RectTransform>().sizeDelta.y : 0f;
 		var verticalGroup = matchesPanel.GetComponent<VerticalLayoutGroup>();
-		var battleCount = UserModel.Battles.Length;
+		var battleCount = PlayerModel.Battles.Length;
 		var padding = verticalGroup.padding.top + verticalGroup.padding.bottom;
 		// height is sum of all elements + spacing between them + padding on top and bottom
 		matchesPanel.sizeDelta = new Vector2(matchesPanel.sizeDelta.x, height * battleCount + verticalGroup.spacing * (battleCount - 1) + padding);
@@ -161,6 +171,15 @@ public class MainMenuManager : MonoBehaviour
 	private void OnQuitButtonClick()
 	{
 		Application.Quit();
+	}
+
+	private void OnMatchesButtonClick()
+	{
+		matchesContainerPanel.gameObject.SetActive(!matchesContainerPanel.gameObject.activeInHierarchy);
+		if (matchesContainerPanel.gameObject.activeInHierarchy)
+		{
+			FetchBattles();
+		}
 	}
 	
 }

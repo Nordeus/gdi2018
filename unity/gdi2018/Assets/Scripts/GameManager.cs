@@ -20,10 +20,12 @@ public class GameManager : MonoBehaviour
 			return instance;
 		}
 	}
+	
+	private const float TIME_FOR_LEVEL = 60f;
 
 	private Tank tank;
 	private List<ShootingTower> towers;
-	private float startTime;
+	private float remainingTime;
 
 	public enum GameStateType
 	{
@@ -36,7 +38,7 @@ public class GameManager : MonoBehaviour
 	
 	public int Score
 	{
-		get { return Mathf.RoundToInt(Time.time - startTime); }
+		get { return Mathf.RoundToInt(remainingTime); }
 	}
 
 	public Action<bool> OnGameEnds;
@@ -46,11 +48,16 @@ public class GameManager : MonoBehaviour
 		ResumeGame();
 		tank = FindObjectOfType<Tank>();
 		towers = FindObjectsOfType<ShootingTower>().ToList();
-		startTime = Time.time;
+		remainingTime = TIME_FOR_LEVEL;
 	}
 
 	private void Update()
 	{
+		if (GameState == GameStateType.Playing)
+		{
+			remainingTime -= Time.deltaTime;
+		}
+		
 		// check for end game
 		if (GameState == GameStateType.Playing && IsEnd())
 		{
@@ -59,7 +66,7 @@ public class GameManager : MonoBehaviour
 			GameState = GameStateType.EndGame;
 
 			var playerHasWon = tank.Health > 0;
-			UserModel.PostScore(Score, playerHasWon);
+			PlayerModel.PostScore(Score, playerHasWon);
 			
 			if (OnGameEnds != null)
 			{
@@ -87,7 +94,7 @@ public class GameManager : MonoBehaviour
 
 	private bool IsEnd()
 	{
-		return tank.Health == 0 || towers.All(t => !t.gameObject.activeInHierarchy);
+		return tank.Health == 0 || remainingTime <= 0 || towers.All(t => !t.gameObject.activeInHierarchy);
 	}
 
 	private void ResumeGame()

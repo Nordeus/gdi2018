@@ -21,11 +21,11 @@ public class MatchInfoPanel : MonoBehaviour
 	[SerializeField]
 	private Color lostColor;
 
-	public void Refresh(UserModel.BattleData data)
+	public void Refresh(PlayerModel.BattleData data)
 	{
-		matchTimeText.text = data.timestamp;
+		matchTimeText.text = data.endedAt;
 		matchScoreText.text = data.score.ToString();
-		backImage.color = data.haveWon ? winColor : lostColor;
+		backImage.color = data.won ? winColor : lostColor;
 	}
 
 }
