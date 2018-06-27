@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
 
 	private Tank tank;
 	private List<ShootingTower> towers;
+	private float startTime;
 
 	public enum GameStateType
 	{
@@ -32,6 +33,11 @@ public class GameManager : MonoBehaviour
 	}
 	
 	public GameStateType GameState { get; private set; }
+	
+	public int Score
+	{
+		get { return Mathf.RoundToInt(Time.time - startTime); }
+	}
 
 	public Action<bool> OnGameEnds;
 
@@ -40,6 +46,7 @@ public class GameManager : MonoBehaviour
 		ResumeGame();
 		tank = FindObjectOfType<Tank>();
 		towers = FindObjectsOfType<ShootingTower>().ToList();
+		startTime = Time.time;
 	}
 
 	private void Update()
@@ -50,9 +57,12 @@ public class GameManager : MonoBehaviour
 			Debug.Log("END");
 			Time.timeScale = 0f;
 			GameState = GameStateType.EndGame;
+
+			var playerHasWon = tank.Health > 0;
+			UserModel.PostScore(Score, playerHasWon);
+			
 			if (OnGameEnds != null)
 			{
-				var playerHasWon = tank.Health > 0;
 				OnGameEnds(playerHasWon);
 			}
 		}
