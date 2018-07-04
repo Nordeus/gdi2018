@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
 		}
 	}
 	
-	private const float TIME_FOR_LEVEL = 60f;
+	private const float TIME_FOR_LEVEL = 999f;
 
 	private Tank tank;
 	private List<ShootingTower> towers;
