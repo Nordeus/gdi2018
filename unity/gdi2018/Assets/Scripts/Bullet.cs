@@ -1,12 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.AI;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
 	private bool exploding;
 	private float timeToDestroy;
-	
+
+	private NavMeshSurface navMeshSurface;
+
+	private void Awake()
+	{
+		navMeshSurface = FindObjectOfType<NavMeshSurface>();
+	}
+
 	private void OnTriggerEnter(Collider other)
 	{
 		Debug.LogWarning("TRIGGER " + other.gameObject.tag);
@@ -28,6 +36,7 @@ public class Bullet : MonoBehaviour
 			else
 			{
 				other.gameObject.SetActive(false);
+				navMeshSurface.BuildNavMesh();
 			}
 		}
 		

@@ -72,6 +72,7 @@ GameObject:
   - component: {fileID: 4815379475106412}
   - component: {fileID: 65116299807507170}
   - component: {fileID: 114434809541300610}
+  - component: {fileID: 114205351232964354}
   m_Layer: 0
   m_Name: CompleteShootingTower
   m_TagString: Destructible
@@ -218,15 +219,15 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1101338288461932}
-  m_LocalRotation: {x: 0, y: 0.9930685, z: -0, w: -0.11753729}
-  m_LocalPosition: {x: 17.3, y: 0, z: 0.1}
+  m_LocalRotation: {x: 0, y: -0.33364236, z: 0, w: 0.9426998}
+  m_LocalPosition: {x: 0.7, y: 0, z: 20}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4825180200352064}
   - {fileID: 4186679629275400}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 193.5, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -38.98, z: 0}
 --- !u!4 &4825180200352064
 Transform:
   m_ObjectHideFlags: 1
@@ -549,6 +550,23 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.12, y: 3.12, z: 1.12}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114205351232964354
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1101338288461932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a1766b10641b4be883aba42cc53cbe5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  reloadDuration: 1
+  shootingForce: 1500
+  shootingFrom: {fileID: 4186679629275400}
+  shootingLayerMask:
+    serializedVersion: 2
+    m_Bits: 1536
 --- !u!114 &114434809541300610
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -561,9 +579,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerRotationSpeed: 1
-  reloadDuration: 1
-  shootingForce: 1500
-  shootingFrom: {fileID: 4186679629275400}
-  shootingLayerMask:
-    serializedVersion: 2
-    m_Bits: 1536
