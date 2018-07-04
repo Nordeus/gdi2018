@@ -87,7 +87,8 @@ public class GameManager : MonoBehaviour
 			}
 			else if (GameState == GameStateType.EndGame)
 			{
-				ExitToMainMenu();
+				//ExitToMainMenu();
+				ReloadGame();
 			}
 		}
 	}
