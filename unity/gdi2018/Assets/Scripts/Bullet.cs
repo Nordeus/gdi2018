@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Bullet : MonoBehaviour
 {
@@ -28,6 +29,7 @@ public class Bullet : MonoBehaviour
 			else
 			{
 				other.gameObject.SetActive(false);
+				FindObjectOfType<NavMeshSurface>().BuildNavMesh();
 			}
 		}
 		
