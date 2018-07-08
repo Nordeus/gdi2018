@@ -17,16 +17,17 @@ public class EnemyTank : MonoBehaviour
 
 	private float timeToRefresh;
 
-	private void Update()
+	private void Start()
 	{
-		if (timeToRefresh >= 0)
+		StartCoroutine(GoToTank());
+	}
+
+	private IEnumerator GoToTank()
+	{
+		while (true)
 		{
-			timeToRefresh -= Time.deltaTime;
-			if (timeToRefresh <= 0)
-			{
-				timeToRefresh = refreshTime;
-				agent.SetDestination(tank.transform.position);
-			}
+			agent.SetDestination(tank.transform.position);
+			yield return new WaitForSeconds(refreshTime);
 		}
 	}
 }

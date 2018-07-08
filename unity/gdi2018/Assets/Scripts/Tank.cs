@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -33,14 +34,24 @@ public class Tank : MonoBehaviour
 	private bool pressedBack;
 	private bool pressedRight;
 
-	private int health;
 
 	private float timeToReload;
 	
+	private int health;
 	public int Health
 	{
 		get { return health; }
+		set
+		{
+			health = value;
+			if (OnHealthChanged != null)
+			{
+				OnHealthChanged();
+			}
+		}
 	}
+
+	public Action OnHealthChanged;
 	
 	private void Awake()
 	{
@@ -49,7 +60,7 @@ public class Tank : MonoBehaviour
 		myRigidbody = GetComponent<Rigidbody>();
 		
 		timeToReload = 0f;
-		health = startingHealth;
+		Health = startingHealth;
 	}
 
 	private void Start()
@@ -120,8 +131,8 @@ public class Tank : MonoBehaviour
 
 	public void OnHit()
 	{
-		health--;
-		if (health == 0)
+		Health--;
+		if (Health == 0)
 		{
 			gameObject.SetActive(false);
 		}

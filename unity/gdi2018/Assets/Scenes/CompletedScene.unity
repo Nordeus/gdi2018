@@ -343,6 +343,7 @@ MonoBehaviour:
   - {fileID: 1087706627}
   fullColor: {r: 1, g: 0, b: 0, a: 1}
   emptyColor: {r: 1, g: 1, b: 1, a: 0.5803922}
+  duration: 0.5
 --- !u!1 &323923951
 GameObject:
   m_ObjectHideFlags: 0
@@ -665,7 +666,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &515151617
 RectTransform:
   m_ObjectHideFlags: 0
@@ -813,7 +814,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 446194, guid: 2848658c3ba934e74a28b1ade225be7b, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -4.3
+      value: -10
       objectReference: {fileID: 0}
     - target: {fileID: 446194, guid: 2848658c3ba934e74a28b1ade225be7b, type: 2}
       propertyPath: m_LocalPosition.y
@@ -821,7 +822,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 446194, guid: 2848658c3ba934e74a28b1ade225be7b, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 24.8
+      value: -3.4
       objectReference: {fileID: 0}
     - target: {fileID: 446194, guid: 2848658c3ba934e74a28b1ade225be7b, type: 2}
       propertyPath: m_LocalRotation.x
@@ -864,6 +865,10 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 69455754f6b5c4f838e78d016e5c8282, type: 2}
+    - target: {fileID: 173472, guid: 2848658c3ba934e74a28b1ade225be7b, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2848658c3ba934e74a28b1ade225be7b, type: 2}
   m_IsPrefabParent: 0
