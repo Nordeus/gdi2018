@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour
 
 	public enum GameStateType
 	{
+		Countdown,
 		Playing,
 		Paused,
 		EndGame
@@ -42,13 +43,36 @@ public class GameManager : MonoBehaviour
 	}
 
 	public Action<bool> OnGameEnds;
+	public Action<int> OnCountdown;
 
 	private void Start()
 	{
-		ResumeGame();
 		tank = FindObjectOfType<Tank>();
 		towers = FindObjectsOfType<ShootingTower>().ToList();
 		remainingTime = TIME_FOR_LEVEL;
+
+		StartCoroutine(DoCountdown());
+	}
+
+	private IEnumerator DoCountdown()
+	{
+		GameState = GameStateType.Countdown;
+		Time.timeScale = 0f;
+
+		for (int i = 3; i > 0; i--)
+		{
+			if (OnCountdown != null)
+			{
+				OnCountdown(i);
+			}
+			yield return new WaitForSecondsRealtime(1f);
+		}
+		
+		if (OnCountdown != null)
+		{
+			OnCountdown(0);
+		}
+		ResumeGame();
 	}
 
 	private void Update()
