@@ -20,19 +20,16 @@ public class EnemyTank : MonoBehaviour
 	void Start ()
 	{
 		myAgent = GetComponent<NavMeshAgent>();
+
+		StartCoroutine(DoWork());
 	}
-	
-	// Update is called once per frame
-	void Update ()
+
+	private IEnumerator DoWork()
 	{
-		if (timeToRefresh >= 0)
+		while (true)
 		{
-			timeToRefresh -= Time.deltaTime;
-			if (timeToRefresh < 0)
-			{
-				myAgent.SetDestination(playerTank.position);
-				timeToRefresh = refreshTime;
-			}
+			myAgent.SetDestination(playerTank.position);
+			yield return new WaitForSeconds(refreshTime);
 		}
 	}
 }
